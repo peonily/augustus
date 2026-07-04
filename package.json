@@ -1,0 +1,8 @@
+{
+  "name": "em-closet",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build-static.js",
+    "affiliate:app": "node tools/affiliate-admin/server.js"
+  }
+}
