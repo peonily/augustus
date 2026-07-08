@@ -4,23 +4,11 @@ const path = require("path");
 const root = path.resolve(__dirname, "..");
 const outDir = path.join(root, "dist");
 
-const files = [
-  "about.html",
-  "affiliate-disclosure.html",
-  "blog-feminine-minimal-styling.html",
-  "blog-korean-capsule-wardrobe.html",
-  "blog-korean-fashion-trends.html",
-  "blog-korean-layering-techniques.html",
-  "blog-soft-girl-aesthetic.html",
-  "blog-spring-summer-korean-outfits.html",
-  "blog.html",
-  "contact.html",
-  "index.html",
-  "privacy-policy.html",
-  "script.js",
-  "shop.html",
-  "styles.css",
-];
+const files = fs
+  .readdirSync(root, { withFileTypes: true })
+  .filter((entry) => entry.isFile())
+  .map((entry) => entry.name)
+  .filter((file) => file.endsWith(".html") || file === "script.js" || file === "styles.css");
 
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });

@@ -1,5 +1,6 @@
 function getCurrentFile() {
-  return (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const file = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+  return file.includes(".") ? file : `${file}.html`;
 }
 
 function getCurrentHash() {
